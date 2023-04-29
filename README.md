@@ -1,39 +1,60 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
+A customizable floating action button menu that will pop up fabs with special animation.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
+<image src="https://user-images.githubusercontent.com/25709266/235315772-038c934d-1b3a-4002-96db-b80f36cc7944.gif" width=300>
 
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
+## Installation
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+In the `pubspec.yaml` of your flutter project, add the following dependency:
 
-## Features
+```yaml
+dependencies:
+  flutter:
+    sdk:
+  fan_floating_menu: any
+```
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Import the fantasy menu package like this:
 
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+```dart
+  import 'package:fan_floating_menu/fan_floating_menu.dart';
+```
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Simply create a FanFloatingMenu widget, and pass the required params:
 
 ```dart
-const like = 'sample';
+  FanFloatingMenu(
+        menuItems: [
+          FanMenuItem(onTap: () {}, icon: Icons.edit_rounded, title: 'Edit Texts'),
+          FanMenuItem(onTap: () {}, icon: Icons.save_rounded, title: 'Save Notes'),
+          FanMenuItem(onTap: () {}, icon: Icons.send_rounded, title: 'Send Images'),
+        ],
+      ),
 ```
 
-## Additional information
+## Customization
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+Customize the FanFloatingMenu widget with these parameters:
+
+```dart
+  /// Defines the direction of the whole Floating Menu.
+  final FanMenuDirection fanMenuDirection;
+
+  /// Defines menu items, that are of [FanMenuItem] type.
+  final List<FanMenuItem> menuItems;
+
+  /// Defines the [Curve] for use in all animations related to.
+  final Curve expandItemsCurve;
+
+  /// Defines any widget for the toggle button widget.
+  /// If null then a plus icon will be shown.
+  final Widget? toggleButtonWidget;
+
+  /// Defines the color for the toggle button icon.
+  final Color toggleButtonIconColor;
+
+  /// Defines the color for the toggle button background.
+  final Color toggleButtonColor;
+
+```
