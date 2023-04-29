@@ -38,13 +38,16 @@ Simply create a FanFloatingMenu widget, and pass the required params:
 Customize the FanFloatingMenu widget with these parameters:
 
 ```dart
+
   /// Defines the direction of the whole Floating Menu.
+  /// Defaults to [FanMenuDirection.ltr]
   final FanMenuDirection fanMenuDirection;
 
   /// Defines menu items, that are of [FanMenuItem] type.
   final List<FanMenuItem> menuItems;
 
   /// Defines the [Curve] for use in all animations related to.
+  /// Defaults to [Curves.easeInOutBack]
   final Curve expandItemsCurve;
 
   /// Defines any widget for the toggle button widget.
@@ -52,9 +55,11 @@ Customize the FanFloatingMenu widget with these parameters:
   final Widget? toggleButtonWidget;
 
   /// Defines the color for the toggle button icon.
+  /// Defaults to [Colors.white]
   final Color toggleButtonIconColor;
 
   /// Defines the color for the toggle button background.
+  /// Defaults to [Colors.pink]
   final Color toggleButtonColor;
 
 ```
