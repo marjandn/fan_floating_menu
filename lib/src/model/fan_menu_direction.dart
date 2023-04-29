@@ -1,0 +1,4 @@
+enum FanMenuDirection {
+  rtl,
+  ltr,
+}
