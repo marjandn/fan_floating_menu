@@ -1,6 +1,7 @@
 A customizable floating action button menu that will pop up fabs with special animation.
 
-<image src="https://user-images.githubusercontent.com/25709266/235315772-038c934d-1b3a-4002-96db-b80f36cc7944.gif" width=300>
+<image src="https://github.com/user-attachments/assets/9512289a-2256-4f7e-aba3-9d72a366d522" width=300>
+ 
 
 ## Installation
 
