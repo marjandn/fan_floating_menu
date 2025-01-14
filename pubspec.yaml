@@ -1,6 +1,6 @@
 name: fan_floating_menu
 description: A customizable floating action button menu that will pop up fabs with special animation.
-version: 0.0.1
+version: 0.0.2
 homepage: https://github.com/marjandn/fan_floating_menu
 
 environment:

@@ -12,6 +12,8 @@ class FanFloatingMenu extends StatefulWidget {
     this.toggleButtonColor = Colors.pink,
     this.toggleButtonIconColor = Colors.white,
     this.toggleButtonWidget,
+    this.buttonShape = const CircleBorder(),
+    this.buttonSize = 50,
   }) : assert(menuItems.isNotEmpty && menuItems.length < 5);
 
   /// Defines the direction of the whole Floating Menu.
@@ -37,6 +39,14 @@ class FanFloatingMenu extends StatefulWidget {
   /// Defaults to [Colors.pink]
   final Color toggleButtonColor;
 
+  /// Defines the shape of floating button
+  /// Defaults to [CircleBorder()]
+  final ShapeBorder buttonShape;
+
+  /// Defines the size of floating button
+  /// Defaults to [50]
+  final double buttonSize;
+
   @override
   State<FanFloatingMenu> createState() => _FanFloatingMenu();
 }
@@ -46,20 +56,21 @@ class _FanFloatingMenu extends State<FanFloatingMenu> with TickerProviderStateMi
   late AnimationController _textAnimationController;
   late Animation<double> _floatingButtonsAnimation;
 
-  final double toggleButtonSize = 75;
-  double get _menuItemHeigh => (toggleButtonSize - 15);
+  late final double toggleButtonSize = widget.buttonSize;
+  double get _menuItemHeigh => (40);
 
   @override
   void initState() {
     super.initState();
     _animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 800),
+      duration: const Duration(milliseconds: 100),
+      reverseDuration: const Duration(milliseconds: 300),
     );
     _textAnimationController = AnimationController(
         vsync: this,
-        duration: const Duration(milliseconds: 1000),
-        reverseDuration: const Duration(milliseconds: 400));
+        duration: const Duration(milliseconds: 200),
+        reverseDuration: const Duration(milliseconds: 200));
 
     _floatingButtonsAnimation =
         CurvedAnimation(parent: _animationController, curve: widget.expandItemsCurve)
@@ -105,6 +116,7 @@ class _FanFloatingMenu extends State<FanFloatingMenu> with TickerProviderStateMi
           child: SizedBox.square(
             dimension: toggleButtonSize,
             child: FloatingActionButton(
+              shape: widget.buttonShape,
               onPressed: () {
                 _toggleMenu();
               },
@@ -115,7 +127,6 @@ class _FanFloatingMenu extends State<FanFloatingMenu> with TickerProviderStateMi
                     Icon(
                       Icons.add_rounded,
                       color: widget.toggleButtonIconColor,
-                      size: 45,
                     ),
               ),
             ),

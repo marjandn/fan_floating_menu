@@ -44,16 +44,6 @@ class MenuItemWidget extends StatelessWidget {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SizeTransition(
-                  sizeFactor: CurvedAnimation(
-                    parent: _textAnimationController,
-                    curve: _menuItemAnimationInterval(),
-                  ),
-                  axis: Axis.horizontal,
-                  child: SizedBox(
-                    width: ((_index + 1) * 30),
-                  ),
-                ),
                 InkWell(
                   onTap: () => _fanMenuItem.onTap(),
                   borderRadius: const BorderRadius.all(
@@ -61,7 +51,6 @@ class MenuItemWidget extends StatelessWidget {
                   ),
                   child: _fanMenuItem.itemWidget ??
                       Ink(
-                        padding: const EdgeInsets.symmetric(horizontal: 14),
                         decoration: BoxDecoration(
                             color: _fanMenuItem.menuItemColor,
                             boxShadow: _fanMenuItem.menuItemBoxShadow,
@@ -69,33 +58,36 @@ class MenuItemWidget extends StatelessWidget {
                               Radius.circular(80),
                             )),
                         child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-                          Icon(
-                            _fanMenuItem.icon,
-                            color: _fanMenuItem.menuItemIconColor,
-                            size: 24,
-                          ),
                           SizeTransition(
-                            sizeFactor: CurvedAnimation(
-                              parent: _textAnimationController,
-                              curve: _menuItemAnimationInterval(),
-                            ),
+                            sizeFactor: _textAnimationController,
                             axis: Axis.horizontal,
-                            child: Row(
-                              children: [
-                                const SizedBox(
-                                  width: 8,
-                                ),
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    _fanMenuItem.title,
-                                    textAlign: TextAlign.left,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: _fanMenuItem.titleStyle,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 13),
+                              child: Row(
+                                children: [
+                                  Icon(
+                                    _fanMenuItem.icon,
+                                    color: _fanMenuItem.menuItemIconColor,
                                   ),
-                                ),
-                              ],
+                                  Row(
+                                    children: [
+                                      const SizedBox(
+                                        width: 8,
+                                      ),
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: Text(
+                                          _fanMenuItem.title,
+                                          textAlign: TextAlign.left,
+                                          maxLines: 1,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: _fanMenuItem.titleStyle,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ]),
