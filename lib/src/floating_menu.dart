@@ -59,6 +59,8 @@ class _FanFloatingMenu extends State<FanFloatingMenu> with TickerProviderStateMi
   late final double toggleButtonSize = widget.buttonSize;
   double get _menuItemHeigh => (40);
 
+  bool showClosIcon = false;
+
   @override
   void initState() {
     super.initState();
@@ -82,8 +84,10 @@ class _FanFloatingMenu extends State<FanFloatingMenu> with TickerProviderStateMi
   void _startMenuItemsAnimation(AnimationStatus status) {
     if (status == AnimationStatus.completed) {
       _textAnimationController.forward();
+      setState(() => showClosIcon = true);
     } else if (status == AnimationStatus.reverse) {
       _textAnimationController.reverse();
+      setState(() => showClosIcon = false);
     }
   }
 
@@ -123,11 +127,16 @@ class _FanFloatingMenu extends State<FanFloatingMenu> with TickerProviderStateMi
               backgroundColor: widget.toggleButtonColor,
               child: RotationTransition(
                 turns: Tween<double>(begin: 0, end: (pi * .04)).animate(_animationController),
-                child: widget.toggleButtonWidget ??
-                    Icon(
-                      Icons.add_rounded,
-                      color: widget.toggleButtonIconColor,
-                    ),
+                child: showClosIcon
+                    ? Icon(
+                        Icons.add_rounded,
+                        color: widget.toggleButtonIconColor,
+                      )
+                    : widget.toggleButtonWidget ??
+                        Icon(
+                          Icons.add_rounded,
+                          color: widget.toggleButtonIconColor,
+                        ),
               ),
             ),
           ),
