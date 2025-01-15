@@ -61,6 +61,14 @@ Customize the FanFloatingMenu widget with these parameters:
 
   /// Defines the color for the toggle button background.
   /// Defaults to [Colors.pink]
-  final Color toggleButtonColor;
+  final Color toggleButtonColor; 
+
+  /// Defines the shape of floating button
+  /// Defaults to [CircleBorder()]
+  final ShapeBorder buttonShape;
+
+  /// Defines the size of floating button
+  /// Defaults to [50]
+  final double buttonSize;
 
 ```
