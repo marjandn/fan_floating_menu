@@ -1,3 +1,8 @@
+## 0.0.4
+
+- Upgrade Flutter version
+- Solve Ink transparency issue
+
 ## 0.0.3
 
 - Add close button icon
